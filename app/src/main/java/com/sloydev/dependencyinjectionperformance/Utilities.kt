@@ -12,7 +12,6 @@ data class LibraryResult(val injectorName: String, val results: Map<Variant, Tes
 }
 
 data class TestResult(
-    val startupTime: List<Milliseconds>,
     val injectionTime: List<Milliseconds>
 )
 

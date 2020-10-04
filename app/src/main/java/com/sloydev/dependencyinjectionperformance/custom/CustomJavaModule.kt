@@ -1,6 +1,7 @@
 package com.sloydev.dependencyinjectionperformance.custom
 
 import com.sloydev.dependencyinjectionperformance.FibonacciJava
+import org.koin.dsl.module
 
 
 val customJavaModule = module {
