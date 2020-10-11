@@ -5,9 +5,6 @@ import com.sloydev.dependencyinjectionperformance.dagger2.DaggerJavaDaggerCompon
 import com.sloydev.dependencyinjectionperformance.dagger2.DaggerKotlinDaggerComponent
 import com.sloydev.dependencyinjectionperformance.dagger2.JavaDaggerComponent
 import com.sloydev.dependencyinjectionperformance.dagger2.KotlinDaggerComponent
-import com.sloydev.dependencyinjectionperformance.koin.koinJavaModule
-import com.sloydev.dependencyinjectionperformance.koin.koinKotlinModule
-import org.koin.core.context.startKoin
 
 class App : Application() {
     lateinit var kotlinComponent: KotlinDaggerComponent
@@ -18,14 +15,5 @@ class App : Application() {
 
         kotlinComponent = DaggerKotlinDaggerComponent.create()
         javaComponent = DaggerJavaDaggerComponent.create()
-
-        startKoin {
-            modules(
-                listOf(
-                    koinJavaModule,
-                    koinKotlinModule
-                )
-            )
-        }
     }
 }

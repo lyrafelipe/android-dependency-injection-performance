@@ -1,11 +1,9 @@
 package com.sloydev.dependencyinjectionperformance
 
 import android.content.Context
-import org.koin.core.KoinComponent
-import org.koin.core.get
 import javax.inject.Inject
 
-class InjectionTest : KoinComponent {
+class InjectionTest {
 
     private val kotlinDaggerTest = KotlinDaggerTest()
     private val javaDaggerTest = JavaDaggerTest()
@@ -14,7 +12,6 @@ class InjectionTest : KoinComponent {
 
     fun runTests(context: Context): List<LibraryResult> {
         return listOf(
-            koinTest(),
             daggerTest(context)
         )
     }
@@ -24,20 +21,6 @@ class InjectionTest : KoinComponent {
     ): TestResult {
         val testDurations = (1..rounds).map { measureTime { test() } }
         return TestResult(testDurations)
-    }
-
-    private fun koinTest(): LibraryResult {
-        log("Running Koin...")
-        return LibraryResult(
-            "Koin", mapOf(
-                Variant.KOTLIN to runTest(
-                    test = { get<Fib300>() },
-                ),
-                Variant.JAVA to runTest(
-                    test = { get<FibonacciJava.Fib300>() },
-                )
-            )
-        )
     }
 
     private fun daggerTest(context: Context): LibraryResult {
