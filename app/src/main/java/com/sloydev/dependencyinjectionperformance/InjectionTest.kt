@@ -31,10 +31,10 @@ class InjectionTest : KoinComponent {
         return LibraryResult(
             "Koin", mapOf(
                 Variant.KOTLIN to runTest(
-                    test = { get<Fib8>() },
+                    test = { get<Fib300>() },
                 ),
                 Variant.JAVA to runTest(
-                    test = { get<FibonacciJava.Fib8>() },
+                    test = { get<FibonacciJava.Fib300>() },
                 )
             )
         )
@@ -54,11 +54,11 @@ class InjectionTest : KoinComponent {
 
     class KotlinDaggerTest {
         @Inject
-        lateinit var daggerFib8: Fib8
+        lateinit var daggerFib8: Fib300
     }
 
     class JavaDaggerTest {
         @Inject
-        lateinit var daggerFib8: FibonacciJava.Fib8
+        lateinit var daggerFib8: FibonacciJava.Fib300
     }
 }
